@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
-import Grid from './Grid/Grid';
 import { Rnd } from 'react-rnd';
 import classes from './NewSchedule.module.scss';
 import Card from './Card/Card';
 import { v4 as uuid } from 'uuid';
 
 const NewSchedule = ({ userCards }) => {
-  const [activeCards, setActiveCards] = useState([
-    { id: 1, text: 'Test Card' },
-    { id: 2, text: 'Test Card 2' },
-  ]);
+  const [activeCards, setActiveCards] = useState([]);
 
-  const [cardsInSchedule, setCardsInSchedule] = useState([
-    { id: 1, text: 'Test Card' },
-    { id: 2, text: 'Test Card 2' },
-  ]);
+  const [cardsInSchedule, setCardsInSchedule] = useState([]);
 
   const times = [
     '06:00',
@@ -38,8 +31,11 @@ const NewSchedule = ({ userCards }) => {
     '24:00',
   ];
 
-  const onUserCardClick = (content) => {
+  const onUserCardMouseDown = (content) => {
     setActiveCards([...activeCards, { id: uuid(), text: content }]);
+  };
+
+  const onUserCardMouseUp = (content) => {
     setCardsInSchedule([...cardsInSchedule, { id: uuid(), text: content }]);
   };
 
@@ -55,7 +51,7 @@ const NewSchedule = ({ userCards }) => {
     <div className={classes.NewSchedule}>
       <div className={classes.Header}>
         <input type='color' name='' id='' />
-        <input type='text' placeholder='New Schdedule' />
+        <input type='text' placeholder='New Schedule' />
         <i className='las la-edit'></i>
       </div>
       <div className={classes.Main}>
@@ -75,7 +71,11 @@ const NewSchedule = ({ userCards }) => {
             <h3>Your Cards</h3>
             <ul>
               {userCards.map((card) => (
-                <li onClick={() => onUserCardClick(card.text)} key={card.id}>
+                <li
+                  onMouseDown={() => onUserCardMouseDown(card.text)}
+                  onMouseUp={() => onUserCardMouseUp(card.text)}
+                  key={card.id}
+                >
                   <span className={classes.Card}>{card.text}</span>
                 </li>
               ))}
@@ -115,7 +115,7 @@ const NewSchedule = ({ userCards }) => {
                   x: 0,
                   y: 0,
                   width: 150,
-                  height: 32,
+                  height: 64,
                 }}
                 resizeGrid={[1, 8]}
                 dragGrid={[150, 8]}

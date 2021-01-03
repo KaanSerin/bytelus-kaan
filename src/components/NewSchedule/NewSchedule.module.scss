@@ -1,7 +1,55 @@
 .NewSchedule{
     .Header{
         display: flex;
+        align-items: center;
         margin-bottom: 16px;
+
+        input[type="color"]{
+            margin-right: 16px;
+            
+            border: none;
+            background: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+
+            &:focus{
+                outline: none;
+            }
+
+            &::-webkit-color-swatch-wrapper {
+                padding: 0;
+            }
+
+            &::-webkit-color-swatch {
+                border: none;
+                border-radius: 50%;
+            }
+        }
+
+        input[type="text"]{
+            width: 160px;
+            border: none;
+            border-bottom: 1px solid #c9c9c9;
+
+            margin-right: 6px;
+            
+            font-size: 1.25rem;
+            font-weight: 400;
+
+            &::placeholder{    
+                color: #a5a5a5;
+            }
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        i{
+            color:#a5a5a5;
+            font-size: 1.25rem;
+        }
     }
 
     .Main{
@@ -14,8 +62,14 @@
             width: 240px;
             margin-right: 80px;
             border-right: 1px solid #c9c9c9;
+            
+            font-size: 0.875rem;
 
             h3{
+                text-transform: uppercase;
+                color: #cfcfcf;
+                font-size: 0.875rem;
+                font-weight: 400;
                 margin: 0 0 10px;
             }
 

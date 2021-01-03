@@ -19,13 +19,14 @@ const App = () => {
         <Layout>
           <Switch>
             <Route
+              exact
               path='/new-schedule'
               render={(props) => (
                 <NewSchedule {...props} userCards={userCards} />
               )}
             />
 
-            <Route path='/' component={Index} />
+            <Route exact path='/' component={Index} />
           </Switch>
         </Layout>
       </div>
