@@ -8,7 +8,7 @@ const Navbar = () => {
       <Link to='/'>
         <img src='./bytelus.png' alt='Bytelus Logo' />
       </Link>
-      <p>Kaan Serin - Submission</p>
+      <p>Kaan Serin</p>
     </nav>
   );
 };

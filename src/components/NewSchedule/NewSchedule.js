@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Rnd } from 'react-rnd';
 import classes from './NewSchedule.module.scss';
 import Card from './Card/Card';
-import { v4 as uuid } from 'uuid';
 
 const NewSchedule = ({ userCards }) => {
   const [activeCards, setActiveCards] = useState([]);
@@ -32,11 +31,17 @@ const NewSchedule = ({ userCards }) => {
   ];
 
   const onUserCardMouseDown = (content) => {
-    setActiveCards([...activeCards, { id: uuid(), text: content }]);
+    setActiveCards([
+      ...activeCards,
+      { id: parseInt(Math.random() * 1000), text: content },
+    ]);
   };
 
   const onUserCardMouseUp = (content) => {
-    setCardsInSchedule([...cardsInSchedule, { id: uuid(), text: content }]);
+    setCardsInSchedule([
+      ...cardsInSchedule,
+      { id: parseInt(Math.random() * 1000), text: content },
+    ]);
   };
 
   const onDragStop = (e, d, card) => {
