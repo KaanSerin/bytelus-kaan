@@ -8,7 +8,7 @@ const Grid = () => {
     <div
       style={{
         width: '1050px',
-        height: '768px',
+        height: '641px',
       }}
       className={classes.Grid}
     >
