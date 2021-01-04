@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classes from './Card.module.scss';
 
-const Card = ({ text }) => {
+const Card = ({ text, day, startTime, endTime }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
@@ -17,7 +17,9 @@ const Card = ({ text }) => {
 
       {showTooltip ? (
         <div className={classes.Tooltip}>
-          <div className={classes.Time}>Monday 06:00 - 08:00</div>
+          <div className={classes.Time}>
+            {day} {startTime} - {endTime}
+          </div>
           <i onClick={() => setShowTooltip(false)} className='las la-times'></i>
           <ul>
             <li>{text}</li>
