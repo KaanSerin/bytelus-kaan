@@ -56,6 +56,20 @@ const InteractiveCard = ({ card }) => {
   };
 
   const onResizeStop = (e, direction, ref, delta, position) => {
+    const heightDiff = delta.height;
+
+    const oldTime = +endTime.split(':')[0] * 60 + +endTime.split(':')[1];
+    const timeDiff = (heightDiff / 8) * 15;
+    const newTime = oldTime + timeDiff;
+
+    const newEndHour = Math.floor(newTime / 60);
+    const newEndMinute = newTime % 60;
+
+    const formattedEndTime = `${(newEndHour + '').padStart(2, '0')}:${(
+      newEndMinute + ''
+    ).padEnd(2, '0')}`;
+
+    setEndTime(formattedEndTime);
     setHeight(ref.style.height);
   };
 
