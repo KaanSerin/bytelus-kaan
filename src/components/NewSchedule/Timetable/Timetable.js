@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import Grid from './Grid/Grid';
 import classes from './Timetable.module.scss';
@@ -24,9 +25,16 @@ const times = [
   '24:00',
 ];
 
-const Timetable = ({ activeCards }) => {
+const Timetable = ({ removeCardInSchedule, activeCards }) => {
   return (
     <div className={classes.Timetable}>
+      <div
+        style={{
+          top: (moment().hour() - 6) * 32 + (moment().minute() / 15) * 8,
+        }}
+        className={classes.TimeHighlighter}
+      ></div>
+
       <div className={classes.Days}>
         <p>Monday</p>
         <p>Tuesday</p>
@@ -36,13 +44,22 @@ const Timetable = ({ activeCards }) => {
         <p>Saturday</p>
         <p>Sunday</p>
       </div>
+
       <div className={classes.GridBackground}>
+        <div
+          style={{ left: moment().day() * 150 - 150 }}
+          className={classes.DayHighlighter}
+        ></div>
+
         {times.map((time) => (
           <div key={time}>{time}</div>
         ))}
       </div>
 
-      <Grid activeCards={activeCards} />
+      <Grid
+        removeCardInSchedule={removeCardInSchedule}
+        activeCards={activeCards}
+      />
     </div>
   );
 };

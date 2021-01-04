@@ -1,12 +1,7 @@
 import React from 'react';
 import classes from './Sidebar.module.scss';
 
-const Sidebar = ({
-  userCards,
-  cardsInSchedule,
-  onUserCardMouseDown,
-  onUserCardMouseUp,
-}) => {
+const Sidebar = ({ userCards, cardsInSchedule, onUserCardClick }) => {
   return (
     <div className={classes.Sidebar}>
       <div>
@@ -24,11 +19,7 @@ const Sidebar = ({
         <h3>Your Cards</h3>
         <ul>
           {userCards.map((card) => (
-            <li
-              onMouseDown={() => onUserCardMouseDown(card.text)}
-              onMouseUp={() => onUserCardMouseUp(card.text)}
-              key={card.id}
-            >
+            <li onClick={() => onUserCardClick(card.text)} key={card.id}>
               <span className={classes.Card}>{card.text}</span>
             </li>
           ))}

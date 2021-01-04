@@ -1,9 +1,8 @@
-import { min } from 'moment';
 import React, { useState } from 'react';
 import { Rnd } from 'react-rnd';
 import Card from './Card/Card';
 
-const InteractiveCard = ({ card }) => {
+const InteractiveCard = ({ removeCardInSchedule, card }) => {
   const [height, setHeight] = useState('64px');
   const [day, setDay] = useState('Monday');
   const [startTime, setStartTime] = useState('06:00');
@@ -36,7 +35,6 @@ const InteractiveCard = ({ card }) => {
     ).padEnd(2, '0')}`;
 
     setEndTime(formattedEndTime);
-    console.log(formattedEndTime);
   };
 
   const onCardDragStop = (e, d) => {
@@ -103,10 +101,11 @@ const InteractiveCard = ({ card }) => {
       bounds='parent'
     >
       <Card
+        removeCardInSchedule={removeCardInSchedule}
         startTime={startTime}
         day={day}
         endTime={endTime}
-        text={card.text}
+        card={card}
       />
     </Rnd>
   );

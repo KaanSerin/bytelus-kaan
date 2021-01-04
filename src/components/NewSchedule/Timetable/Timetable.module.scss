@@ -1,6 +1,22 @@
 .Timetable{
     position: relative;
 
+
+    .TimeHighlighter{
+        position: absolute;
+        z-index: 9999;
+        content: "";
+        
+        height: 1px;
+        width: 100%;
+
+        top: 0;
+        left: 0;
+        transform: translate(0, 35px);
+        
+        background-color: red;
+    }
+
     .GridBackground{
         pointer-events: none;
         position: absolute;
@@ -12,6 +28,18 @@
         
         display: grid;
         grid-template-rows: repeat(19, 1fr);
+
+        .DayHighlighter{
+            position:absolute;
+            top: 0px;
+            left: 0px;
+            transform: translate(50px, 0);
+            content: "";
+            height: 100%;
+            width: 150px;
+            background-color: rgba(0, 0, 0, 0.050);
+    
+        }
 
         div{
             color:  #a5a5a5;

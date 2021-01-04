@@ -7,26 +7,29 @@ const NewSchedule = ({ userCards }) => {
   const [activeCards, setActiveCards] = useState([]);
   const [cardsInSchedule, setCardsInSchedule] = useState([]);
 
-  const onUserCardMouseDown = (content) => {
+  const onUserCardClick = (content) => {
     setActiveCards([
       ...activeCards,
       { id: parseInt(Math.random() * 1000), text: content },
     ]);
-  };
 
-  const onUserCardMouseUp = (content) => {
     setCardsInSchedule([
       ...cardsInSchedule,
       { id: parseInt(Math.random() * 1000), text: content },
     ]);
   };
 
-  const onDragStop = (e, d, card) => {
-    if (d.x < -149 || d.x > 1049) {
-      console.log(`Card with id ${card.id} with x: ${d.x} is out of bounds.`);
-      setCardsInSchedule(activeCards.filter((c) => c.id !== card.id));
-      setActiveCards(activeCards.filter((c) => c.id !== card.id));
-    }
+  // const onDragStop = (e, d, card) => {
+  //   if (d.x < -149 || d.x > 1049) {
+  //     console.log(`Card with id ${card.id} with x: ${d.x} is out of bounds.`);
+  //     setCardsInSchedule(activeCards.filter((c) => c.id !== card.id));
+  //     setActiveCards(activeCards.filter((c) => c.id !== card.id));
+  //   }
+  // };
+
+  const removeCardInSchedule = (id) => {
+    setActiveCards(activeCards.filter((card) => card.id !== id));
+    setCardsInSchedule(activeCards.filter((card) => card.id !== id));
   };
 
   return (
@@ -40,11 +43,13 @@ const NewSchedule = ({ userCards }) => {
         <Sidebar
           userCards={userCards}
           cardsInSchedule={cardsInSchedule}
-          onUserCardMouseDown={onUserCardMouseDown}
-          onUserCardMouseUp={onUserCardMouseUp}
+          onUserCardClick={onUserCardClick}
         />
 
-        <Timetable activeCards={activeCards} />
+        <Timetable
+          removeCardInSchedule={removeCardInSchedule}
+          activeCards={activeCards}
+        />
       </div>
     </div>
   );

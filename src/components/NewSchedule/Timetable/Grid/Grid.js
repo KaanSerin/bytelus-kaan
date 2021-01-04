@@ -1,7 +1,7 @@
 import React from 'react';
 import InteractiveCard from './InteractiveCard/InteractiveCard';
 
-const Grid = ({ activeCards }) => {
+const Grid = ({ removeCardInSchedule, activeCards }) => {
   return (
     <div
       style={{
@@ -10,7 +10,11 @@ const Grid = ({ activeCards }) => {
       }}
     >
       {activeCards.map((card) => (
-        <InteractiveCard key={card.id} card={card} />
+        <InteractiveCard
+          removeCardInSchedule={removeCardInSchedule}
+          key={card.id}
+          card={card}
+        />
       ))}
     </div>
   );
