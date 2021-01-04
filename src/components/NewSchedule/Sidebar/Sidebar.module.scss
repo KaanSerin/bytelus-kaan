@@ -1,0 +1,35 @@
+.Sidebar{
+    width: 240px;
+    margin-right: 80px;
+    border-right: 1px solid #c9c9c9;
+    
+    font-size: 0.875rem;
+
+    h3{
+        text-transform: uppercase;
+        color: #cfcfcf;
+        font-size: 0.875rem;
+        font-weight: 400;
+        margin: 0 0 10px;
+    }
+
+    ul{
+        list-style: none;
+        margin: 0 0 16px;
+        padding: 0;
+
+        word-wrap: break-word;
+
+        .Card{
+            display: inline-block;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            padding: 5px 12px;
+
+            &:hover{
+                cursor: pointer;
+                background-color: darken(white, 10);
+            }
+        }
+    }
+}

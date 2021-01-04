@@ -1,6 +1,6 @@
 .Card{
     position: relative;
-    
+
     box-sizing: border-box;
     overflow: hidden;
 
@@ -15,7 +15,66 @@
     width: 100%;
     height: 100%;
 
-    div{
-        border-top: 4px solid rgb(74, 173, 74);
+    div:first-of-type{
+        background-color: rgb(74, 173, 74);
+        color: white;
+        font-size: 10px;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
+
+    div:last-of-type{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70%;
+
+        p:hover{
+            cursor: pointer;
+        }
+    } 
+}
+
+.Tooltip{
+    color: #1b1b1b;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    transform: translate(25%, 0);
+    width: 300px;
+
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0,0, 0, .25);
+   
+    padding: 12px 0;
+
+    .Time{
+        padding: 0 12px;
+        font-size: 1.25rem;
+    }
+
+    .Delete{
+        border-top: 1px solid #ebebeb;
+        color: #a3a3a3;
+        margin-top: 20px;
+        padding: 12px 12px 0;
+        font-weight: 400;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+   i {
+       font-size: 1.125rem;
+       position: absolute;
+       right: 10px;
+       top: 12px;
+
+       &:hover{
+           cursor: pointer;
+       }
+   }
 }
